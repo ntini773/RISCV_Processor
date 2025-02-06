@@ -1,8 +1,8 @@
 'include "sub.v"
-module strictly_less(input a[63:0],input b[63:0],output less);
+module set_less_than(input a[63:0],input b[63:0],output less);
     wire [63:0] diff;
     wire borrow;
-    64bit_Subtractor sub(.a(a),.b(b),.diff(diff),.borrow(borrow));
+    bit_Subtractor sub(.a(a),.b(b),.diff(diff),.borrow(borrow));
     assign less = diff[63];
 
 endmodule

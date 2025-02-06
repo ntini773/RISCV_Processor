@@ -1,3 +1,4 @@
+`include "add.v"
 module complement(input [63:0] a,output [63:0] comp);
     genvar i;
     generate
@@ -7,8 +8,8 @@ module complement(input [63:0] a,output [63:0] comp);
     endgenerate
 endmodule
 
-module 64bit_Subtractor(input a[63:0],input b[63:0]
-,output difference[63:0],output borrow);
+module bit_Subtractor(input [63:0]a,input [63:0]b
+,output [63:0] difference,output borrow);
     // A+(~B)+1
     //logic = assign a to difference and add ~b
     wire [63:0] b1;
@@ -16,8 +17,7 @@ module 64bit_Subtractor(input a[63:0],input b[63:0]
 
     wire cin;
     assign cin = 1'b1;
-    
-    64bit_Adder adder(.a(a),.b(b1),.cin(cin),.sum(difference),.cout(borrow));
-
-
+    wire temp;
+    bit_Adder adder(.a(a),.b(b1),.cin(cin),.sum(difference),.cout(temp));
+    assign borrow=~temp;
 endmodule

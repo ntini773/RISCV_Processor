@@ -1,9 +1,9 @@
-module 64bit_Adder(
-    input a[63:0],input b[63:0],input cin,
-    output sum[63:0],output cout
-);
+
+module bit_Adder(input [63:0]a,input [63:0]b,input cin,output [63:0]sum,output cout);
     //dummy var
-    wire p[63:0],g[63:0],c[64:0];
+    wire [63:0]p;
+    wire [63:0]g;
+    wire [64:0]c;
      
     //P,G gen
     genvar i;
@@ -16,12 +16,10 @@ module 64bit_Adder(
     endgenerate
     
     assign c[0] = cin; 
-    // and(c[0],cin,1'b0); // to assign c[0] = cin
-    // and(c[0],cin,0'b0); // to assign c[0] = 0
 
     //Sum,Carry gen
     generate
-        for(i=0;i<63;i=i+1) begin:carry_gen
+        for(i=0;i<=63;i=i+1) begin:carry_gen
             wire and_term;
             and(and_term, p[i], c[i]);  
             or(c[i + 1], g[i], and_term);  
@@ -30,10 +28,7 @@ module 64bit_Adder(
     endgenerate
 
     //Last bit
-    xor(sum[63], p[63], c[63]);
     assign cout = c[64];
-
-
 
 
 endmodule
