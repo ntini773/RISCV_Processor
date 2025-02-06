@@ -12,7 +12,7 @@ module 64bit_Adder(
             xor(p[i],a[i],b[i]);
             and(g[i],a[i],b[i]);
         end
-
+        
     endgenerate
     
     assign c[0] = cin; 
