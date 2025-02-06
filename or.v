@@ -1,3 +1,5 @@
+`ifndef BIT_OR 
+`define BIT_OR 
 module bit_Or(input [63:0]a,input [63:0]b,output [63:0]out);
     genvar i;
     generate
@@ -6,3 +8,4 @@ module bit_Or(input [63:0]a,input [63:0]b,output [63:0]out);
         end
     endgenerate
 endmodule
+`endif 

@@ -1,3 +1,5 @@
+`ifdef SHIFT_LEFT_LOGICAL
+`define SHIFT_LEFT_LOGICAL
 `include "slt.v"
 module mux2 (
     input sel,    // Selector input
@@ -35,3 +37,4 @@ module shift_left_logical(input [63:0]a,input [4:0]b,output [63:0]out);
         end
     endgenerate
 endmodule
+`endif 

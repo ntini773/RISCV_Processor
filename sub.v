@@ -1,3 +1,5 @@
+`ifndef SUB
+`define SUB
 `include "add.v"
 module complement(input [63:0] a,output [63:0] comp);
     genvar i;
@@ -21,3 +23,5 @@ module bit_Subtractor(input [63:0]a,input [63:0]b
     bit_Adder adder(.a(a),.b(b1),.cin(cin),.sum(difference),.cout(temp));
     assign borrow=~temp;
 endmodule
+
+`endif 

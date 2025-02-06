@@ -1,3 +1,5 @@
+`ifndef SRA
+`define SRA
 `include "slt.v"
 module shift_right_arithmetic(input [63:0]a,input [4:0]b,output [63:0]out);
     genvar i;
@@ -15,3 +17,4 @@ module shift_right_arithmetic(input [63:0]a,input [4:0]b,output [63:0]out);
         end
         endgenerate
 endmodule
+`endif SRA

@@ -1,3 +1,5 @@
+`ifndef SLTU
+`define SLTU
 module set_less_than_unsigned(input [63:0]a,input [63:0]b,output less);
     genvar i;
     wire [63:0]lt;
@@ -21,3 +23,5 @@ module set_less_than_unsigned(input [63:0]a,input [63:0]b,output less);
 
     assign less = chain[0];
 endmodule
+
+`endif SLTU

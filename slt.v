@@ -1,3 +1,5 @@
+`ifndef SLT
+`define SLT
 `include "sub.v"
 module set_less_than(input [63:0]a,input [63:0]b,output wire less);
     wire [63:0] diff;
@@ -6,3 +8,4 @@ module set_less_than(input [63:0]a,input [63:0]b,output wire less);
     assign less = diff[63];
 
 endmodule
+`endif SLT

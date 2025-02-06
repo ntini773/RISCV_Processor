@@ -1,4 +1,5 @@
-
+`ifndef ADD
+`define ADD
 module bit_Adder(input [63:0]a,input [63:0]b,input cin,output [63:0]sum,output cout);
     //dummy var
     wire [63:0]p;
@@ -32,3 +33,5 @@ module bit_Adder(input [63:0]a,input [63:0]b,input cin,output [63:0]sum,output c
 
 
 endmodule
+
+`endif
