@@ -1,4 +1,4 @@
-'include "sub.v"
+`include "sub.v"
 module test_64bit_Subtractor;
     
     // Inputs

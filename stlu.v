@@ -8,14 +8,14 @@ module set_less_than_unsigned(input [63:0]a,input [63:0]b,output less);
             and(lt[i], not_a, b[i]);  // lt[i] = ~a[i] & b[i] (a < b condition)
             
         end
-
     endgenerate
 
     wire [63:0]chain;
     assign chain[63] = lt[63];
+
     generate
-        for(i=63;i>=0;i=i-1) begin:chain_gen
-            or(chain[i-1],lt[i-1],chain[i]); //if lt is 1 ,chain is already 1 from then
+        for(i=62;i>=0;i=i-1) begin:chain_gen
+            or(chain[i],lt[i],chain[i+1]); //if lt is 1 ,chain is already 1 from then
         end
     endgenerate
 

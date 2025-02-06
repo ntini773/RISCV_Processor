@@ -9,7 +9,7 @@ module complement(input [63:0] a,output [63:0] comp);
 endmodule
 
 module bit_Subtractor(input [63:0]a,input [63:0]b
-,output [63:0] difference,output borrow);
+,output [63:0] difference,output wire borrow);
     // A+(~B)+1
     //logic = assign a to difference and add ~b
     wire [63:0] b1;
