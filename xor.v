@@ -1,3 +1,4 @@
+
 module bit_Xor(input [63:0]a,input [63:0]b,output [63:0]out);
     genvar i;
     generate

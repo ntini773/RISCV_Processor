@@ -17,4 +17,4 @@ module shift_right_logical(input [63:0]a,input [4:0]b,output [63:0]out);
         end
     endgenerate
 endmodule
-`endif SRL
+`endif 

@@ -49,7 +49,7 @@ module test_64bit_Subtractor;
         #10;
         
         // Finish simulation
-        $stop;
+        $finish;
     end
     
     initial begin

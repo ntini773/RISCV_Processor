@@ -8,4 +8,4 @@ module set_less_than(input [63:0]a,input [63:0]b,output wire less);
     assign less = diff[63];
 
 endmodule
-`endif SLT
+`endif 

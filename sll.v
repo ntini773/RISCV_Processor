@@ -1,6 +1,7 @@
-`ifdef SHIFT_LEFT_LOGICAL
+`ifndef SHIFT_LEFT_LOGICAL
 `define SHIFT_LEFT_LOGICAL
 `include "slt.v"
+
 module mux2 (
     input sel,    // Selector input
     input in0,    // First input

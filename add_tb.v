@@ -57,7 +57,7 @@ module test_bit_Adder;
         #10;
         
         // Finish simulation
-        $stop;
+        $finish;
     end
     
     initial begin
