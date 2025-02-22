@@ -1,0 +1,6 @@
+Time = 0 | a =                   10 | b =                   20 | less = 1
+Time = 10 | a =                   30 | b =                   15 | less = 1
+Time = 20 | a = 18446744073709551615 | b =                    0 | less = 1
+Time = 30 | a =                    0 | b =                    0 | less = 0
+Time = 40 | a =                   25 | b =                   25 | less = 0
+Time = 50 | a =                  100 | b =                  200 | less = 1

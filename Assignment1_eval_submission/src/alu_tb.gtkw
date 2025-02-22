@@ -1,0 +1,32 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Sun Feb  9 19:15:24 2025
+[*]
+[dumpfile] "/home/nitin/Desktop/RISCV_Processor/alu_tb.vcd"
+[dumpfile_mtime] "Sun Feb  9 18:37:56 2025"
+[dumpfile_size] 3759022
+[savefile] "/home/nitin/Desktop/src/alu_tb.gtkw"
+[timestart] 0
+[size] 2880 1650
+[pos] -95 -95
+*-4.079816 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] alu_tb.
+[treeopen] alu_tb.uut.
+[sst_width] 360
+[signals_width] 206
+[sst_expanded] 1
+[sst_vpaned_height] 486
+@420
+alu_tb.a[63:0]
+alu_tb.b[63:0]
+@28
+alu_tb.alu_op[3:0]
+@421
+alu_tb.out[63:0]
+@28
+alu_tb.cout
+alu_tb.borrow
+alu_tb.overflowadd
+alu_tb.overflowsub
+[pattern_trace] 1
+[pattern_trace] 0
