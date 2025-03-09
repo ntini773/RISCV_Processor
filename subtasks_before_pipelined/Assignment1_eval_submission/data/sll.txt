@@ -1,0 +1,6 @@
+Time=0 | a=                  17 | b= 0 | out=                  17
+Time=10 | a=                  17 | b= 1 | out=                  34
+Time=20 | a=                  17 | b= 8 | out=                4352
+Time=30 | a=                  17 | b=16 | out=             1114112
+Time=40 | a=                  17 | b=31 | out=         36507222016
+Time=50 | a=                  17 | b= 8 | out=                4352

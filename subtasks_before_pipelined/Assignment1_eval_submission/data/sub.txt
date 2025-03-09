@@ -1,0 +1,6 @@
+Time=0 | a=0 | b=0 | difference=0 | borrow=0
+Time=10 | a=10 | b=5 | difference=5 | borrow=0
+Time=20 | a=5 | b=10 | difference=18446744073709551611 | borrow=1
+Time=30 | a=18446744073709551615 | b=1 | difference=18446744073709551614 | borrow=0
+Time=40 | a=1311768467294899695 | b=1311768467294899695 | difference=0 | borrow=0
+Time=50 | a=18364758544493064720 | b=1311768467294899695 | difference=17052990077198165025 | borrow=0
