@@ -80,6 +80,7 @@ cd RISCV_Processor/Pipelined_Processor/src
 ### **1. Prepare the Assembly Program**
 
 * Use an assembly load supporting `add`, `sub`, `and`, `or`, `ld`, `sd`, `beq` commands.
+* Do note that instruction memory is byte addressed(8bits) and data memory is double word addressed(8byte/64bit) ,so kindly align rhe assemby program accordingly 
 * Convert assembly instructions to machine code using [RV Codec](https://luplab.gitlab.io/rvcodecjs/).
 * Save the converted instructions in `instructions.txt`.
 
