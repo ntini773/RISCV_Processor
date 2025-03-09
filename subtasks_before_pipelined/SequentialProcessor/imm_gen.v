@@ -12,7 +12,7 @@ module immediate_generate(input wire[31:0]instruction,output reg[63:0] immediate
                 imm[4:0] = instruction[11:7];
                 immediate = {{52{imm[11]}}, imm}; 
             end
-            7'b1100011:begin  //beq
+            7'b1100011:begin  //beq or blt
                 imm[11] = instruction[31];
                 imm[10] = instruction[7];
                 imm[9:4] = instruction[30:25];

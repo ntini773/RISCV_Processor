@@ -35,6 +35,7 @@ module ALU_tb;
         // #10;
         // ALU_control = 4'b0011;  // OR
         // #10;
+       
 
         // A = 64'b0000000000000000000000000000000000000000000000000000000000000000;
         // B = 64'b0000000000000000000000000000000000000000000000000000000000000000;
@@ -129,15 +130,17 @@ module ALU_tb;
         
         
         A = 64'h10; 
-        B = 64'h10;
-        ALU_control = 4'b0000;  // ADD
+        B = 64'h12;
+        ALU_control = 4'b0010;  // ADD
         #10;
-        ALU_control = 4'b0001;  // SUB
+        ALU_control = 4'b0110;  // SUB
         #10;
-        ALU_control = 4'b0010;  // AND
+        ALU_control = 4'b0000;  // AND
         #10;
-        ALU_control = 4'b0011;  // OR
+        ALU_control = 4'b0001;  // OR
         #10;
+        ALU_control = 4'b0111;  //slt
+        #10
             
         // ALU_control = 4'b1111;  // not defined operation
         $finish;

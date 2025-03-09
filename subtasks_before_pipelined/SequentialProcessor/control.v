@@ -38,7 +38,7 @@ module control(input [6:0]instruction,
                 ALUSrc=1;
                 ALUOp=2'b00;
             end
-            7'b1100011:begin  //beq
+            7'b1100011:begin  //beq or blt
                 branch=1;
                 ALUOp=2'b01;
             end

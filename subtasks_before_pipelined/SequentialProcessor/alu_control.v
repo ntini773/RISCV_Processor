@@ -8,7 +8,11 @@ module alu_control(input[6:0]funct7,input[2:0]funct3,input [1:0]alu_op,output re
             alu_ctl=4'b0010;
         end
         2'b01:begin
-            alu_ctl=4'b0110;
+            case(funct3)
+            3'b000: alu_ctl=4'b0110;
+            3'b100: alu_ctl=4'b0111;
+            default: alu_ctl=4'b0000;
+        endcase
         end
         2'b10:begin
             case(funct7)

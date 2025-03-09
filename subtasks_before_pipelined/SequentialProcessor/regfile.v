@@ -19,10 +19,10 @@ module register_file (
     end
 
  initial begin
-    registers[22]=64'd1;
-    registers[24]=64'd15;
-    registers[23]=64'd0;
-    registers[5]=64'd15;
+    registers[2]=64'd0;
+    registers[1]=64'd30;
+    registers[6]=64'd1;
+    registers[7]=64'd2;
  end
 
 initial begin

@@ -33,6 +33,11 @@
 `include "NEG.v"
 `endif
 
+`ifndef SLT_v
+`define SLT_v
+`include "SLT.v"
+`endif
+
 module ALU_64(
     input [63:0] A,
     input [63:0] B,
@@ -40,7 +45,7 @@ module ALU_64(
     output [63:0] out,
     output zero
 );
-    wire [63:0] add_out, sub_out, and_out, or_out, z1;
+    wire [63:0] add_out, sub_out, and_out, or_out,slt_out, z1;
     wire Overflow, Cout;
     wire zero;
     reg [63:0] temp;
@@ -51,16 +56,32 @@ module ALU_64(
     SUB_64 sub2(A, B, z1, Overflow);
     AND_64 and1(A, B, and_out);
     OR_64 or1(A, B, or_out);
+    SLT_64 slt(A,B,slt_out);
 
     // zero flag implementation
-   always @(*)
-   begin
-        case(z1)
-            64'd0: z2 = 1'b1;
-            default: z2 = 1'b0;
-        endcase
-   end
+//    always @(*)
+//    begin
+//         case(z1)
+//             64'd0: z2 = 1'b1;
+//             default: z2 = 1'b0;
+//         endcase
+        
+//    end
+
+  always @(*)
+  begin 
+    case(ALU_control)
+       4'b0110: z2=(z1==0)? 1'b1:1'b0;        
+       4'b0111: z2=(slt_out[0]==1) ? 1'b1:1'b0;
+       default: z2= 1'b0;
+       endcase
+  end
+
+
    assign zero = z2;
+
+
+
 
     // ALU output implementation
    always @(*)
@@ -70,6 +91,7 @@ module ALU_64(
             4'b0110: temp = sub_out;
             4'b0000: temp = and_out;
             4'b0001: temp = or_out;
+            4'b0111: temp=  slt_out;
             default: temp = 64'b0;
         endcase
    end
