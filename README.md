@@ -160,9 +160,6 @@ src/
     └── test_case5.v
 ```
 
-
-
-
 ## **Usage**
 
 ### **1. Prepare the Assembly Program**
@@ -259,7 +256,7 @@ gtkwave main.vcd
 ### **Corresponding Machine Code**
 
 ```plaintext
-//instructions.txt
+//instructions.txt(already written)
 
 00000000000000000000110100110011
 01000000011000001000111110110011
@@ -284,6 +281,14 @@ gtkwave main.vcd
 ```
 
 ---
+
+### Run the following command
+
+```bash
+python3 intialise.py 
+```
+
+Update the input_registers.txt and input_data_memory.txt as prompted and preload according to the code as given below:
 
 ### input_registers.txt used (base address of array in x2 and length of array in x1 , x6=1,x7=2)
 
@@ -324,6 +329,16 @@ memory5: x
 
 ```
 
+### **Run the Processor**
+
+Execute the following commands in the terminal within the project folder:
+
+```bash
+iverilog -o risc.out main.v
+vvp risc.out
+python3 hex_to_dec.py
+```
+
 ### **Final Output visible for this in memory.txt**
 
 ```
@@ -336,15 +351,15 @@ memory[5]: 0
 memory[6]: 0
 ```
 
-### **Run the Processor**
+### To simulate waveforms:
 
-Execute the following commands in the terminal within the project folder:
+Run this on terminal within project folder:
 
 ```bash
-iverilog -o risc.out main.v
-vvp risc.out
 gtkwave main.vcd
 ```
+
+##### You are to good to go!
 
 ---
 
