@@ -1,8 +1,15 @@
-
 # **RISC-V Pipelined Processor**
 
+### This RISC-V 5-stage pipelined processor demonstrated remarkable efficiency by successfully executing various algorithmic implementations, including:
 
-## **RISC-V 5-Stage Pipeline Explanation**
+* Bubble Sort
+* Dijkstra's Algorithm
+* Binary Search
+* Counting Odd Numbers in an Array
+* Array Sum Calculation
+* Fibonacci Sequence Generation
+
+These algorithms showcased the processor's ability to handle complex computational tasks through its streamlined pipeline architecture.
 
 ### **1. Instruction Fetch (IF)**
 
@@ -75,12 +82,93 @@ cd RISCV_Processor/Pipelined_Processor/src
 
 ---
 
+### File Structure (/src)
+
+```
+src/
+│
+├── Arithmetic and Logic Components/
+│   ├── ADDv.v
+│   ├── Adder.v
+│   ├── add_gen.v
+│   ├── ALU.v
+│   ├── alu_control.v
+│   ├── full_adder.v
+│   ├── AND.v
+│   ├── MUX2.v
+│   ├── NEG.v
+│   ├── NOT.v
+│   ├── OR.v
+│   ├── SLT.v
+│   └── SUB.v
+│
+├── Pipeline Stage Components/
+│   ├── control.v
+│   ├── data_memory.v
+│   ├── EX.v
+│   ├── EX_MEM.v
+│   ├── FwdUnit.v
+│   ├── HazardDetection.v
+│   ├── ID.v
+│   ├── ID_EX.v
+│   ├── IF.v
+│   ├── IF_ID.v
+│   ├── imm_gen.v
+│   ├── instruction_memory.v
+│   ├── MEM.v
+│   ├── MEM_WB.v
+│   ├── program_counter.v
+│   ├── t_hazard.v
+│   ├── WB.v
+│   └── HazardDetectionUnit.tb.vcd
+│
+├── Register and File Management/
+│   ├── regfile.v
+│   └── refile.v.out
+│
+├── Python Utility Scripts/
+│   └── initialise.py
+│
+├── Input and Configuration Files/
+│   ├── initial_data.txt
+│   ├── initial_reg.txt
+│   ├── initial_register.txt
+│   ├── input_data_memory.txt
+│   ├── input_registers.txt
+│   ├── instructions.txt
+│   ├── memory.txt
+│   ├── register_values.txt
+│   └── pipeline_data_hazard.pdf
+│
+├── Core and Simulation Files/
+│   ├── main.v
+│   ├── main.v.out
+│   ├── main.vcd
+│   ├── processor.out
+│   ├── risc.out
+│   └── risc_pipeline.out
+│
+├── Hex Dump Files/
+│   ├── memory_dump.hex
+│   └── reg_dump.hex
+│
+└── Test Cases/
+    ├── test_case.v
+    ├── test_case2.v
+    ├── test_case3.v
+    ├── test_case4.v
+    └── test_case5.v
+```
+
+
+
+
 ## **Usage**
 
 ### **1. Prepare the Assembly Program**
 
-* Use an assembly load supporting `add`, `sub`, `and`, `or`, `ld`, `sd`, `beq` commands.
-* Do note that `instruction memory` is byte addressed(8bits) and `data memory` is double word addressed(8byte/64bit) ,so kindly align rhe assemby program accordingly 
+* Use an assembly load supporting `add`, `sub`, `and`, `or`, `ld`, `sd`, `beq` ,`blt` commands.
+* Do note that `instruction memory` is byte addressed(8bits) and `data memory` is double word addressed(8byte/64bit) ,so kindly align rhe assemby program accordingly
 * Convert assembly instructions to machine code using [RV Codec](https://luplab.gitlab.io/rvcodecjs/).
 * Save the converted instructions in `instructions.txt`.
 
@@ -131,7 +219,7 @@ gtkwave main.vcd
 
   ```
 - You can see the memory output in decimal format in `memory.txt`.
-- You can see the register output in decimal format in `register.txt`
+- You can see the register output in decimal format in `register_values.txt`
 
 ---
 
@@ -197,45 +285,30 @@ gtkwave main.vcd
 
 ---
 
-### Current regfile.v with Initial begin aligned to sorting
+### input_registers.txt used (base address of array in x2 and length of array in x1 , x6=1,x7=2)
 
-```verilog
-module register_file (
-    input wire clk,
-    input wire write_enable,
-    input wire [4:0] rs1, rs2, rd,
-    input wire [63:0] write_data,
-    output wire [63:0] read_data1, read_data2
-);
+```
+x0: x
+x1: 5
+x2: 0
+x3: 9
+x4: 6
+x5: x
+x6: 1
+x7: 2
+x8: x
 
-    reg [63:0] registers [31:0]; // 32 registers of 64-bit each
+```
 
-    // Asynchronous Read
-    assign read_data1 = (rs1 != 0) ? registers[rs1] : 32'b0;
-    assign read_data2 = (rs2 != 0) ? registers[rs2] : 32'b0;
+### input_data_memory.txt used for Sorting(Eg:base address of array is 0(x2=0) and n=5)
 
-    // Synchronous Write
-    always @(*) begin
-        if (write_enable && rd != 0)
-            registers[rd] <= write_data;
-    end
-
- initial begin  
-    registers[1]=64'd5;
-    registers[2]=64'd0;
-    registers[6]=64'd1;
-    registers[7]=64'd2;
-
- end
-
-initial begin
-    #1000;  
-     $display("Writing memory to file");
-    $writememh("reg_dump.hex", registers);
-        $display("Memory write completed.");  
-end
-
-endmodule
+```
+memory0: 5
+memory1: 3
+memory2: 4
+memory3: 2
+memory4: 1
+memory5: x
 
 ```
 
@@ -243,24 +316,24 @@ endmodule
 
 ```
 0000000000000000000000000000000000000000000000000000000000000101
-0000000000000000000000000000000000000000000000000000000000000100
 0000000000000000000000000000000000000000000000000000000000000011
+0000000000000000000000000000000000000000000000000000000000000100
 0000000000000000000000000000000000000000000000000000000000000010
 0000000000000000000000000000000000000000000000000000000000000001
+0000000000000000000000000000000000000000000000000000000000000000
 
 ```
 
-### **Final Output visible for this in memory_dump.hex**
+### **Final Output visible for this in memory.txt**
 
 ```
-// 0x00000000
-0000000000000001
-0000000000000002
-0000000000000003
-0000000000000004
-0000000000000005
-xxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxx
+memory[0]: 1
+memory[1]: 2
+memory[2]: 3
+memory[3]: 4
+memory[4]: 5
+memory[5]: 0
+memory[6]: 0
 ```
 
 ### **Run the Processor**
@@ -277,4 +350,4 @@ gtkwave main.vcd
 
 ## **Repository Link**
 
-🔗 [GitHub Repository](https://github.com/ntini773/RISCV_Processor/tree/main/Sequential_Processor)
+🔗 [GitHub Repository](https://github.com/ntini773/RISCV_Processor.git)
